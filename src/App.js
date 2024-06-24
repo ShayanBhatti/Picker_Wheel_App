@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
 
-function App() {
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import PickerWheel from './PickerWheel';
+import InputForm from './InputForm';
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #f8f9fa;
+  font-family: Arial, sans-serif;
+`;
+
+const Header = styled.h1`
+  color: #333;
+  margin-bottom: 20px;
+`;
+
+const App = () => {
+  const [items, setItems] = useState(['Apple', 'Orange', 'Banana']);
+
+  const addItem = (item) => {
+    setItems([...items, item]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainer>
+      <Header>Picker Wheel App</Header>
+      <PickerWheel items={items} />
+      <InputForm onAddItem={addItem} />
+    </AppContainer>
   );
-}
+};
 
 export default App;
