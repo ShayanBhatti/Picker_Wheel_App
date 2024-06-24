@@ -1,3 +1,5 @@
+// PickerWheel.js
+
 import React, { useState } from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import { useSpring, animated } from 'react-spring';
@@ -93,7 +95,7 @@ const PickerWheel = ({ items }) => {
           {spinning ? 'Spinning...' : selectedItem || 'Click Spin'}
         </Wheel>
       </WheelContainer>
-      <Button onClick={spin} disabled={spinning}>
+      <Button onClick={spin} disabled={spinning || items.length === 0}>
         Spin
       </Button>
     </Container>
